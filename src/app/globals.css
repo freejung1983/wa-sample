@@ -1,0 +1,288 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* STYLE_GUIDE Color Palette - 더 어두운 톤으로 조정 */
+  --background-dark: #111614;
+  --surface-dark: #1a1a1a;
+  --card-background: #2a2a2a;
+  --primary-green: #38E07A;
+  --success-green: #38E07A;
+  --muted-green: #16a34a;
+  --primary-text: #ffffff;
+  --secondary-text: #a1a1aa;
+  --muted-text: #71717a;
+  
+  /* Status Colors */
+  --status-new: #a1a1aa;
+  --status-checkin: #38E07A;
+  --status-created: #f59e0b;
+  --status-ready: #3b82f6;
+  --status-completed: #38E07A;
+}
+
+/* Dark theme by default - 더 어두운 배경 */
+body {
+  color: var(--primary-text);
+  background: var(--background-dark) !important;
+  font-family: Spline Sans, Helvetica, system-ui, sans-serif !important;
+}
+
+/* STYLE_GUIDE Typography Classes */
+.header-lg {
+  @apply text-2xl font-semibold;
+}
+
+.header-md {
+  @apply text-xl font-medium;
+}
+
+.header-sm {
+  @apply text-lg font-medium;
+}
+
+.body-lg {
+  @apply text-base font-normal;
+}
+
+.body-md {
+  @apply text-sm font-normal;
+}
+
+.body-sm {
+  @apply text-xs font-normal;
+}
+
+.label-md {
+  @apply text-sm font-medium;
+}
+
+.label-sm {
+  @apply text-xs font-medium;
+}
+
+/* STYLE_GUIDE Layout Classes */
+.container-main {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.grid-main {
+  @apply grid grid-cols-1 lg:grid-cols-3 gap-6;
+}
+
+.grid-cards {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-4;
+}
+
+.nav-header {
+  @apply flex h-16 border-b border-white px-4 py-3 justify-center;
+  background: var(--background-dark);
+  background-image: inherit !important;
+}
+
+.tab-active {
+  @apply border-b-2 border-green-500 text-white;
+}
+
+.tab-inactive {
+  @apply text-gray-400 hover:text-gray-300;
+}
+
+.kpi-card {
+  @apply bg-gray-900 border border-gray-800 rounded-xl p-6 shadow-lg;
+}
+
+.status-badge {
+  @apply px-3 py-1 rounded-full text-xs font-medium;
+}
+
+.status-new {
+  @apply bg-gray-600 text-gray-100;
+}
+
+.status-active {
+  @apply bg-green-600 text-green-100;
+}
+
+.status-warning {
+  @apply bg-amber-600 text-amber-100;
+}
+
+.status-info {
+  @apply bg-blue-600 text-blue-100;
+}
+
+.status-success {
+  @apply bg-emerald-600 text-emerald-100;
+}
+
+/* STYLE_GUIDE Button Classes */
+.btn-primary {
+  @apply px-6 py-4 rounded-lg transition-all duration-200;
+}
+
+.btn-secondary {
+  @apply text-gray-100 border border-gray-700 px-6 py-4 rounded-lg transition-all duration-200;
+  background-color: #29382E !important;
+}
+
+.btn-rounded-full {
+  @apply rounded-full !important;
+}
+
+.btn-icon {
+  @apply hover:bg-green-300 p-2 rounded-lg hover:bg-gray-800 text-gray-400 transition-all duration-200;
+  background-color: #29382E !important;
+}
+
+/* STYLE_GUIDE Interactive Elements */
+.search-bar {
+  @apply focus:border-green-500 placeholder:text-gray-400 text-gray-300 rounded-lg;
+  background-color: #29382E !important;
+}
+
+.dropdown-filter {
+  @apply bg-gray-900 border border-gray-700 rounded-lg;
+}
+
+.timeline-item {
+  @apply relative;
+}
+
+.timeline-icon {
+  @apply w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center border border-gray-700;
+}
+
+.timeline-connector {
+  @apply border-l-2 border-gray-700 ml-5 pb-4;
+}
+
+/* STYLE_GUIDE Animation Classes */
+.hover-scale {
+  @apply transition-all duration-200 ease-in-out hover:scale-105 hover:shadow-xl;
+}
+
+.hover-card {
+  @apply transition-all duration-200 ease-in-out hover:shadow-2xl hover:border-gray-600;
+}
+
+.skeleton-loading {
+  @apply animate-pulse bg-gray-800;
+}
+
+.spinner {
+  @apply animate-spin border-2 border-green-500 border-t-transparent rounded-full;
+}
+
+/* MUI와 Tailwind CSS 호환성을 위한 스타일 */
+.MuiBox-root {
+  @apply w-full;
+}
+
+.MuiButton-root {
+  @apply font-medium;
+}
+
+.nav-dashboard {
+  .MuiBadge-badge {
+    right: 2px !important;
+    padding: 0 4px !important;
+    min-width: 16px !important;
+    height: 16px !important;
+  }
+  
+  .MuiButtonBase-root {
+    min-height: 54px !important;
+    text-transform: inherit !important;
+  }
+}
+
+.timeline {
+  position: relative;
+
+  .timeline-box {
+    margin-top: 7px;
+    position: relative;
+    overflow-y: auto;
+    max-height: 260px;
+    scrollbar-width: thin;
+    scrollbar-color: #28382d transparent;
+
+    /* Webkit browsers (Chrome, Safari) */
+    &::-webkit-scrollbar {
+      height: 100%;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: transparent;
+      border-radius: 4px;
+      margin: 0;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background-color: #28382d;
+      border-radius: 4px;
+    }
+    
+    /* Hide all scrollbar buttons and corners */
+    &::-webkit-scrollbar-button,
+    &::-webkit-scrollbar-corner,
+    &::-webkit-resizer,
+    &::-webkit-scrollbar-button:start:decrement,
+    &::-webkit-scrollbar-button:end:increment {
+      display: none;
+      height: 0;
+      width: 0;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .timeline-item {
+      .MuiBox-root { 
+        position: relative; 
+      }
+      .MuiBox-root::after {
+        content: '';
+        position: absolute;
+        top: -25px;
+        left: 8px;
+        width: 2px;
+        height: 24px;
+        background-color: #29382E;
+      }
+      .MuiBox-root:first-child::after {
+        display: none;
+      }
+    }
+  }
+}
+
+.pagination-box {
+  .MuiButtonBase-root {
+    border-radius: 38px !important;
+    min-width: 38px;
+    width: 38px;
+    height: 38px;
+    line-height: 1;
+
+    &.active {
+      background-color: #29382E !important;
+    }
+  }
+}
+
+/* Responsive utilities */
+@media (max-width: 640px) {
+  .container-main {
+    @apply px-4;
+  }
+  
+  .grid-main {
+    @apply grid-cols-1 gap-4;
+  }
+  
+  .grid-cards {
+    @apply grid-cols-1 gap-3;
+  }
+}
