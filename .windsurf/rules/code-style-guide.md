@@ -1,0 +1,116 @@
+---
+trigger: always_on
+---
+
+---
+description: "Frontend 개발 표준 및 컨텍스트"
+globs:
+alwaysApply: true
+---
+
+# 프론트엔드 에디터 룰 예시
+
+## Tech Stack
+- Next.js + TypeScript + yarn 패키지
+- Tailwind CSS로 스타일 지정
+
+## 코드 스탠다드
+- 모든 신규 파일은 TypeScript로 작성
+- 함수형 컴포넌트 권장
+- 에러 핸들링 필수
+- 변수명은 의미 있게 작성
+
+## Next.js: Route Handler 우선 사용
+- **모든 API 엔드포인트는 Route Handler를 사용하여 구현합니다.**
+- **데이터베이스 작업, 외부 API 호출, 인증 등 복작한 서버 작업은 반드시 Route Handler를 사용합니다.**
+- **Server Action은 단순 폼 제출 또는 간단한 데이터 처리에만 사용합니다.**
+
+---
+
+## Next.js 라우팅: App Router 사용
+- **프로젝트 내 라우팅은 Pages Router 대신 App Router를 사용합니다.**
+
+---
+
+# 일반 규칙
+- **Next.js** 프로젝트에서 간단한 데이터 처리는 **Server Actions**를 사용하여 성능 최적화와 코드 간결성을 유지합니다.
+- 복잡한 로직, 확장성, 또는 외부 API 통합이 필요한 경우 **API Routes**를 사용합니다.
+
+---
+
+## 프로젝트 구조: 주요 폴더 구조
+- **프로젝트 구조는 다음과 같이 설정하세요.**
+
+```
+
+your-nextjs-project
+├─ src/
+│   └─ app/                    # Next.js App Router
+│       ├─ api/ ...            # Route Handlers (server actions와 병행)
+│       ├─ doc/ ...            # 기획 및 화면 정의 문서 등
+│       ├─ layout.tsx          # 루트 레이아웃 (MUI 테마 설정)
+│       ├─ page.tsx            # 메인 페이지
+│       └─ globals.css         # Tailwind + MUI 스타일
+│
+├─ components/
+│  ├─ ui/ ...                   # ShadCN or 공통 UI 컴포넌트
+│  ├─ providers/ ...
+│  └─ layout/                   # layout 공통 컴포넌트
+│     ├── header.tsx
+│     ├── footer.tsx
+│     └── sidebar.tsx     
+│
+├─ constants/ ...                # 상수 폴더
+│
+├─ hooks/ ...                    # 커스텀 훅 폴더
+│   
+├─ lib/
+│  ├─ auth.ts                   # NextAuth 설정
+│  ├─ validations/ ...          # Zod 스키마
+│  └─ i18n/ ...   
+│
+├─ public/                        # 정적 폴더 (이미지, 폰트 등)
+│  ├─ fonts/ ...                 # 폰트 폴더
+│  ├─ images/ ...                # 이미지 폴더
+│  └─ favicon.ico    
+│
+├─ styles/ ...                   # globals.css, tailwind.css Style 폴더   
+│
+├─ tests/ (unit, e2e) ...
+│
+├─ types/ ...                    # 공통 인터페이스 및 타입 정의 폴더
+│
+├─ utils/ ...                    # 유틸리티 함수 모음 폴더
+│
+├─ .env, .env.dev, .env.stage, .env.prod
+├─ .gitignore                    # git-ignore
+├─ middleware.ts                 # middleware
+├─ package.json                  # 의존성 및 스크립트
+├─ tsconfig.json                 # TypeScript 설정
+├─ tailwind.config.js            # Tailwind CSS 설정
+├─ next.config.js                # Next.js 설정
+└─ README.md                     # 프로젝트 문서
+
+```
+
+---
+
+## TypeScript 사용: TS 사용 권장
+- **프로젝트 전반에 TypeScript를 사용합니다.**
+- **타입 안전성을 위해 모든 컴포넌트와 서버 로직에 TypeScript를 적용합니다.**
+
+---
+
+## TypeScript 인터페이스 정의 규칙: 'I' 접두사 사용
+- **타입 인터페이스를 정의하는데 이름 앞에, 'I' 접두사를 사용합니다.**
+- 예시:
+  - ```typescript
+    export interface IProduct {
+      id: number;
+      name: string;
+      price: number;
+    }
+    ```
+- 인터페이스 생성은 types/index.ts 파일에 정의됨.
+
+---
