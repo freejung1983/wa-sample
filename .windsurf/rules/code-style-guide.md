@@ -45,12 +45,12 @@ alwaysApply: true
 
 your-nextjs-project
 ├─ src/
-│   └─ app/                    # Next.js App Router
-│       ├─ api/ ...            # Route Handlers (server actions와 병행)
-│       ├─ doc/ ...            # 기획 및 화면 정의 문서 등
-│       ├─ layout.tsx          # 루트 레이아웃 (MUI 테마 설정)
-│       ├─ page.tsx            # 메인 페이지
-│       └─ globals.css         # Tailwind + MUI 스타일
+│   ├─ app/                    # Next.js App Router
+│   │   ├─ api/ ...            # Route Handlers (server actions와 병행)
+│   │   ├─ layout.tsx          # 루트 레이아웃 (MUI 테마 설정)
+│   │   ├─ page.tsx            # 메인 페이지
+│   │   └─ globals.css         # Tailwind + MUI 스타일
+│   └─ doc/ ...                # 기획 및 화면 정의 문서 등
 │
 ├─ components/
 │  ├─ ui/ ...                   # ShadCN or 공통 UI 컴포넌트

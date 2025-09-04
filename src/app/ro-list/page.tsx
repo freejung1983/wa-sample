@@ -155,7 +155,7 @@ export default function ROListPage() {
         </Grid>
 
         {/* RO Table */}
-        <ROTable title="All Repair Orders" data={roData} />
+        <ROTable />
       </Container>
     </Box>
   )
